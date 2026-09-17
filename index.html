@@ -1,178 +1,277 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UP Board Notes</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UP Board Notes</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      background: #f4f7fb;
-      color: #222;
-    }
-
-    header {
-      background: #2563eb;
-      color: white;
-      padding: 25px 15px;
-      text-align: center;
-    }
-
-    header h1 {
-      font-size: 30px;
-      margin-bottom: 8px;
-    }
-
-    header p {
-      font-size: 16px;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 25px auto;
-      padding: 0 15px;
-    }
-
-    .search {
-      width: 100%;
-      padding: 14px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      font-size: 16px;
-      margin-bottom: 25px;
-    }
-
-    .subjects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-    }
-
-    .card {
-      background: white;
-      padding: 22px;
-      border-radius: 14px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-
-    .card h2 {
-      color: #2563eb;
-      margin-bottom: 12px;
-    }
-
-    .card p {
-      color: #666;
-      margin-bottom: 15px;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #2563eb;
-      color: white;
-      text-decoration: none;
-      padding: 10px 16px;
-      border-radius: 8px;
-    }
-
-    .btn:hover {
-      background: #1d4ed8;
-    }
-
-    footer {
-      margin-top: 40px;
-      background: #111827;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-  </style>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial}
+body{background:#f3f6fb;color:#222}
+header{
+  background:linear-gradient(135deg,#2563eb,#7c3aed);
+  color:white;text-align:center;padding:32px 15px
+}
+header h1{font-size:30px;margin-bottom:8px}
+.container{max-width:900px;margin:auto;padding:20px 15px}
+.search{
+  width:100%;padding:15px;border:0;border-radius:12px;
+  box-shadow:0 3px 12px #ddd;font-size:16px;margin-bottom:22px
+}
+h2{margin:20px 0 15px}
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px
+}
+.card,.chapter,.note{
+  background:white;padding:20px;border-radius:14px;
+  box-shadow:0 3px 12px #ddd;margin-bottom:12px
+}
+.card h3{color:#2563eb;font-size:22px;margin-bottom:8px}
+.card p{color:#666;margin-bottom:15px}
+button{
+  background:#2563eb;color:white;border:0;padding:11px 16px;
+  border-radius:8px;font-size:15px
+}
+button:hover{background:#1d4ed8}
+.chapter{
+  display:flex;justify-content:space-between;align-items:center;
+  cursor:pointer
+}
+.chapter b{color:#2563eb}
+.note h2{color:#2563eb}
+.note p{line-height:1.7;margin-top:12px}
+.back{margin-bottom:15px}
+footer{
+  background:#111827;color:white;text-align:center;
+  padding:25px;margin-top:30px
+}
+.hidden{display:none}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>📚 UP Board Notes</h1>
-    <p>Class 10 & 12 ke Notes ek jagah</p>
-  </header>
+<header>
+<h1>📚 UP Board Notes</h1>
+<p>Class 12 Notes & Important Questions</p>
+</header>
 
-  <div class="container">
+<div class="container">
 
-    <input
-      type="text"
-      id="search"
-      class="search"
-      placeholder="🔍 Subject search karo..."
-      onkeyup="searchNotes()"
-    >
+<input id="search" class="search"
+placeholder="🔍 Subject ya chapter search kare..."
+onkeyup="searchAll()">
 
-    <div class="subjects">
+<!-- HOME -->
+<div id="home">
+<h2>📖 Subjects</h2>
 
-      <div class="card">
-        <h2>📘 Mathematics</h2>
-        <p>Maths ke important notes aur chapters.</p>
-        <a href="#" class="btn">View Notes</a>
-      </div>
+<div class="grid">
 
-      <div class="card">
-        <h2>🔬 Physics</h2>
-        <p>Physics ke chapter-wise notes.</p>
-        <a href="#" class="btn">View Notes</a>
-      </div>
+<div class="card">
+<h3>📐 Mathematics</h3>
+<p>Class 12 Maths chapter-wise notes</p>
+<button onclick="showSubject('math')">View Notes</button>
+</div>
 
-      <div class="card">
-        <h2>🧪 Chemistry</h2>
-        <p>Chemistry ke important notes.</p>
-        <a href="#" class="btn">View Notes</a>
-      </div>
+<div class="card">
+<h3>⚡ Physics</h3>
+<p>Class 12 Physics chapter-wise notes</p>
+<button onclick="showSubject('physics')">View Notes</button>
+</div>
 
-      <div class="card">
-        <h2>💻 Computer</h2>
-        <p>Computer Science ke notes aur study material.</p>
-        <a href="#" class="btn">View Notes</a>
-      </div>
+<div class="card">
+<h3>🧪 Chemistry</h3>
+<p>Class 12 Chemistry chapter-wise notes</p>
+<button onclick="showSubject('chemistry')">View Notes</button>
+</div>
 
-      <div class="card">
-        <h2>📖 Hindi</h2>
-        <p>Hindi ke chapter-wise notes.</p>
-        <a href="#" class="btn">View Notes</a>
-      </div>
+<div class="card">
+<h3>💻 Computer Science</h3>
+<p>Computer Science notes</p>
+<button onclick="showSubject('computer')">View Notes</button>
+</div>
 
-      <div class="card">
-        <h2>🌎 English</h2>
-        <p>English grammar aur chapter notes.</p>
-        <a href="#" class="btn">View Notes</a>
-      </div>
+<div class="card">
+<h3>📕 Hindi</h3>
+<p>Hindi chapter-wise notes</p>
+<button onclick="showSubject('hindi')">View Notes</button>
+</div>
 
-    </div>
-  </div>
+<div class="card">
+<h3>📗 English</h3>
+<p>English chapter-wise notes</p>
+<button onclick="showSubject('english')">View Notes</button>
+</div>
 
-  <footer>
-    <p>© 2026 UP Board Notes | Made for Students ❤️</p>
-  </footer>
+</div>
+</div>
 
-  <script>
-    function searchNotes() {
-      let input = document.getElementById("search").value.toLowerCase();
-      let cards = document.querySelectorAll(".card");
+<!-- CHAPTERS -->
+<div id="chapters" class="hidden">
+<button class="back" onclick="goHome()">⬅️ Back</button>
+<h2 id="subjectTitle"></h2>
+<div id="chapterList"></div>
+</div>
 
-      cards.forEach(function(card) {
-        let text = card.innerText.toLowerCase();
+<!-- NOTE -->
+<div id="notePage" class="hidden">
+<button class="back" onclick="backChapters()">⬅️ Back</button>
+<div class="note">
+<h2 id="noteTitle"></h2>
+<p id="noteText"></p>
+</div>
+</div>
 
-        if (text.includes(input)) {
-          card.style.display = "block";
-        } else {
-          card.style.display = "none";
-        }
-      });
-    }
-  </script>
+</div>
+
+<footer>
+<p>© 2026 UP Board Notes</p>
+<p>Made for Students ❤️</p>
+</footer>
+
+<script>
+
+const data={
+
+math:[
+["Chapter 1: Relations and Functions",
+"Relations and Functions me relation, function, domain, range aur types of functions ka study kiya jata hai."],
+["Chapter 2: Inverse Trigonometric Functions",
+"Inverse trigonometric functions ke principal values aur important formulas ko samjha jata hai."],
+["Chapter 3: Matrices",
+"Matrix numbers ka rectangular arrangement hota hai. Matrix ke types, operations aur properties important hain."],
+["Chapter 4: Determinants",
+"Determinants ka use equations solve karne aur matrices ke important results me hota hai."]
+],
+
+physics:[
+["Chapter 1: Electric Charges and Fields",
+"Electric charge, Coulomb's law, electric field aur electric flux is chapter ke important topics hain."],
+["Chapter 2: Electrostatic Potential and Capacitance",
+"Electric potential, potential difference aur capacitance ke concepts is chapter me padhe jate hain."],
+["Chapter 3: Current Electricity",
+"Current, resistance, Ohm's law aur Kirchhoff's laws important topics hain."],
+["Chapter 4: Moving Charges and Magnetism",
+"Magnetic field, Lorentz force aur moving charge ke magnetic effects is chapter ke main topics hain."]
+],
+
+chemistry:[
+["Chapter 1: Solutions",
+"Solutions, concentration, molarity, molality aur colligative properties important topics hain."],
+["Chapter 2: Electrochemistry",
+"Electrochemical cells, electrode potential aur Nernst equation is chapter ke important concepts hain."],
+["Chapter 3: Chemical Kinetics",
+"Reaction rate, order of reaction aur rate constant is chapter me padhe jate hain."],
+["Chapter 4: d and f Block Elements",
+"d-block aur f-block elements ke properties aur compounds important hain."]
+],
+
+computer:[
+["Chapter 1: Programming",
+"Programming me variables, data types, operators, conditions aur loops important concepts hain."],
+["Chapter 2: Data Structures",
+"Array, stack, queue aur basic data structures ka study kiya jata hai."],
+["Chapter 3: Database",
+"Database, table, records aur SQL ke basic commands important topics hain."]
+],
+
+hindi:[
+["गद्य खंड",
+"गद्य पाठों में लेखक, रचना, मुख्य विचार और महत्वपूर्ण प्रश्नों का अध्ययन करें।"],
+["काव्य खंड",
+"कविताओं में कवि, भावार्थ, काव्य-सौंदर्य और महत्वपूर्ण प्रश्नों पर ध्यान दें।"]
+],
+
+english:[
+["Reading Section",
+"Reading comprehension में passage को ध्यान से पढ़कर questions के answers देने होते हैं।"],
+["Writing Section",
+"Letter, application, article और अन्य writing formats की practice करें।"],
+["Grammar",
+"Tenses, narration, voice और अन्य grammar topics का अभ्यास करें।"]
+]
+
+};
+
+const names={
+math:"📐 Mathematics",
+physics:"⚡ Physics",
+chemistry:"🧪 Chemistry",
+computer:"💻 Computer Science",
+hindi:"📕 Hindi",
+english:"📗 English"
+};
+
+let current="";
+
+function showSubject(subject){
+
+current=subject;
+
+document.getElementById("home").classList.add("hidden");
+document.getElementById("notePage").classList.add("hidden");
+document.getElementById("chapters").classList.remove("hidden");
+
+document.getElementById("subjectTitle").innerText=names[subject];
+
+let list=document.getElementById("chapterList");
+list.innerHTML="";
+
+data[subject].forEach((item,index)=>{
+
+let div=document.createElement("div");
+div.className="chapter";
+div.innerHTML=
+"<b>"+item[0]+"</b><span>➡️</span>";
+
+div.onclick=function(){
+showNote(subject,index);
+};
+
+list.appendChild(div);
+
+});
+
+window.scrollTo(0,0);
+}
+
+function showNote(subject,index){
+
+document.getElementById("chapters").classList.add("hidden");
+document.getElementById("notePage").classList.remove("hidden");
+
+document.getElementById("noteTitle").innerText=data[subject][index][0];
+document.getElementById("noteText").innerText=data[subject][index][1];
+
+window.scrollTo(0,0);
+}
+
+function backChapters(){
+document.getElementById("notePage").classList.add("hidden");
+document.getElementById("chapters").classList.remove("hidden");
+}
+
+function goHome(){
+document.getElementById("chapters").classList.add("hidden");
+document.getElementById("notePage").classList.add("hidden");
+document.getElementById("home").classList.remove("hidden");
+}
+
+function searchAll(){
+
+let q=document.getElementById("search").value.toLowerCase();
+let cards=document.querySelectorAll(".card");
+
+cards.forEach(card=>{
+card.style.display=
+card.innerText.toLowerCase().includes(q)?"":"none";
+});
+
+}
+
+</script>
 
 </body>
-  </html>
+</html>
