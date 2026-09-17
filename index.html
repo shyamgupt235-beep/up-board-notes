@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UP Board Notes</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f7fb;
+      color: #222;
+    }
+
+    header {
+      background: #2563eb;
+      color: white;
+      padding: 25px 15px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 25px auto;
+      padding: 0 15px;
+    }
+
+    .search {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      margin-bottom: 25px;
+    }
+
+    .subjects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .card h2 {
+      color: #2563eb;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #2563eb;
+      color: white;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+    }
+
+    .btn:hover {
+      background: #1d4ed8;
+    }
+
+    footer {
+      margin-top: 40px;
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>📚 UP Board Notes</h1>
+    <p>Class 10 & 12 ke Notes ek jagah</p>
+  </header>
+
+  <div class="container">
+
+    <input
+      type="text"
+      id="search"
+      class="search"
+      placeholder="🔍 Subject search karo..."
+      onkeyup="searchNotes()"
+    >
+
+    <div class="subjects">
+
+      <div class="card">
+        <h2>📘 Mathematics</h2>
+        <p>Maths ke important notes aur chapters.</p>
+        <a href="#" class="btn">View Notes</a>
+      </div>
+
+      <div class="card">
+        <h2>🔬 Physics</h2>
+        <p>Physics ke chapter-wise notes.</p>
+        <a href="#" class="btn">View Notes</a>
+      </div>
+
+      <div class="card">
+        <h2>🧪 Chemistry</h2>
+        <p>Chemistry ke important notes.</p>
+        <a href="#" class="btn">View Notes</a>
+      </div>
+
+      <div class="card">
+        <h2>💻 Computer</h2>
+        <p>Computer Science ke notes aur study material.</p>
+        <a href="#" class="btn">View Notes</a>
+      </div>
+
+      <div class="card">
+        <h2>📖 Hindi</h2>
+        <p>Hindi ke chapter-wise notes.</p>
+        <a href="#" class="btn">View Notes</a>
+      </div>
+
+      <div class="card">
+        <h2>🌎 English</h2>
+        <p>English grammar aur chapter notes.</p>
+        <a href="#" class="btn">View Notes</a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 UP Board Notes | Made for Students ❤️</p>
+  </footer>
+
+  <script>
+    function searchNotes() {
+      let input = document.getElementById("search").value.toLowerCase();
+      let cards = document.querySelectorAll(".card");
+
+      cards.forEach(function(card) {
+        let text = card.innerText.toLowerCase();
+
+        if (text.includes(input)) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+  </script>
+
+</body>
+  </html>
